@@ -2,20 +2,18 @@ console.log(
   "Task 3 ------------------------------------------------------------"
 );
 
-// Task 3
 // Variant 1
 const findBestEmployee = function (employees) {
-  let justStats = Object.values(employees);
-  let bestStats = Math.max(...justStats);
+  let bestStats = Math.max(...Object.values(employees));
   let bestEmployeeName = "";
-
-  // if (Object.keys(employees).length === 0) {
-  //   return "";
-  // }
 
   for (const key in employees) {
     if (employees[key] === bestStats) {
-      bestEmployeeName = key;
+      // For homework
+      // bestEmployeeName = key;
+
+      // For real people
+      bestEmployeeName = key[0].toUpperCase() + key.slice(1);
     }
   }
   return bestEmployeeName;
@@ -24,11 +22,7 @@ const findBestEmployee = function (employees) {
 // Variant 2
 // const findBestEmployee = function (employees) {
 //   let bestStats = 0;
-//   let bestEmployeeName;
-
-//   if (Object.keys(employees).length === 0) {
-//     return "";
-//   }
+//   let bestEmployeeName = "";
 
 //   for (const key in employees) {
 //     if (bestStats < employees[key]) {
@@ -40,6 +34,79 @@ const findBestEmployee = function (employees) {
 //   return bestEmployeeName;
 // };
 
+// Variant by Zhenia Ch.
+// const findBestEmployee = function (employees) {
+//   let bestEmployee = "";
+//   let value = 0;
+//   const entries = Object.entries(employees);
+
+//   for (const entry of entries) {
+//     if (entry[1] > value) {
+//       value = entry[1];
+//       bestEmployee = entry[0];
+//     }
+//   }
+//   return bestEmployee;
+// };
+
+// Variant by Katrin P.
+// const findBestEmployee = function (employees) {
+//   const values = Object.values(employees);
+//   const max = Math.max(...values);
+//   const entries = Object.entries(employees);
+//   let maxName = "";
+
+//   for (const entry of entries) {
+//     if (entry[1] === max) {
+//       maxName = entry[0];
+//     }
+//   }
+//   return maxName;
+// };
+
+//  Variant by Roma
+// const findBestEmployee = function (employees) {
+//   let bestEmployee = "";
+//   let bestHour = 0;
+//   const persons = Object.entries(employees);
+
+//   for (const person of persons) {
+//     if (person[1] > bestHour) {
+//       bestHour = person[1];
+//       bestEmployee = person[0];
+//     }
+//   }
+//   return bestEmployee;
+// };
+
+// Variant by Ruslan Z.
+// const findBestEmployee = function (employees) {
+//   const entries = Object.entries(employees);
+//   let employeeName = "";
+//   let numberOfWorks = 0;
+
+//   for (let i = 0; i < entries.length; i++) {
+//     if (numberOfWorks < entries[i][1]) {
+//       numberOfWorks = entries[i][1];
+//       employeeName = entries[i][0];
+//     }
+//   }
+//   return employeeName;
+// };
+
+// Variant by Alexandr S.
+// const findBestEmployee = function (employees) {
+//   // Находим самое большое значение у свойств передаваемого объекта
+//   let maxValue = Math.max.apply(null, Object.values(employees));
+
+//   // Находим какому свойству объекта соответствует самое большое значение
+//   let maxProp = Object.keys(employees).find(
+//     (item) => employees[item] === maxValue
+//   );
+//   return maxProp === undefined ? "" : maxProp;
+// };
+
+// ---------------------------------------------------------------------------
 // Объекты и ожидаемый результат
 const developers = {
   ann: 29,
@@ -67,5 +134,6 @@ const sellers = {
 console.log(findBestEmployee(sellers));
 // 'lux'
 
-// const empty = {};
-// console.log(findBestEmployee(empty));
+const empty = {};
+console.log(findBestEmployee(empty));
+// ''
